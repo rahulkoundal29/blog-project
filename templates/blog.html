@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 style="margin-bottom:20px; color:#2563eb;">Latest Posts</h1>
+
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;">
+
+    {% for post in posts %}
+    <div class="card">
+        <h2 style="color:#2563eb;">{{ post.title }}</h2>
+        <p style="margin-top:10px; color:#555;">
+            {{ post.content }}
+        </p>
+        <button class="btn" style="margin-top:15px;">Read More</button>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
