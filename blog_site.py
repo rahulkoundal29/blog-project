@@ -4,10 +4,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import redirect,request
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash,check_password_hash
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
-app.secret_key = "mysecret123"
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///users.db"
+load_dotenv(    )
+app.secret_key =  os.getenv("SECRET_KEY")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 
 db = SQLAlchemy(app)
 login_manager = LoginManager()
